@@ -1,19 +1,7 @@
-/* google font import */
 @import url("https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap");
 
-/* render element */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Overpass", sans-serif;
-}
-
-/* variables */
 :root {
-  /* ### Primary */
   --Orange: hsl(25, 97%, 53%);
-  /* ### Neutral */
   --White: hsl(0, 0%, 100%);
   --Light-Grey: hsl(217, 12%, 63%);
   --Medium-Grey: hsl(216, 12%, 54%);
@@ -21,7 +9,14 @@
   --Very-Dark-Blue: hsl(216, 12%, 8%);
 }
 
-/* style start */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   width: 100%;
   height: 100vh;
@@ -30,6 +25,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: var(--Very-Dark-Blue);
+  font-family: "Overpass", sans-serif;
 }
 
 .card {
