@@ -1,54 +1,32 @@
-let allRateArr = document.querySelectorAll(`.rate`);
+let activeRate = 1;
 
-let selectedRate = document.querySelector(`.active`).innerHTML;
+const allRateBtn = document.querySelectorAll('.rate-btn');
 
-let rated = (userRate) => {
-  allRateArr.forEach((rate) => {
-    rate.classList.remove(`active`);
+const starsWrapper = document.getElementById("stars-wrapper");
+
+allRateBtn.forEach((btn) => {
+  btn.addEventListener("click", function(){
+    toggleRate(this.textContent);
   });
+})
 
-  document.getElementById(userRate).classList.add(`active`);
-
-  selectedRate = document.getElementById(userRate).innerHTML;
-
-  document.getElementById(`select`).innerHTML = selectedRate;
-
-//   adding the rating stars
-ratingStars(selectedRate);
-};
-
-// adding rate stars func
-let ratingStars = (selectedRate) => {
-    let delStars = document.querySelectorAll(`.star`);
-
-    delStars.forEach((star) => {
-        star.remove();
-    })
-
-    for (let counter = 1; counter <= selectedRate; counter++) {
-        let imgEl = document.createElement(`img`);
-    
-        imgEl.src = `images/icon-star.svg`;
-    
-        imgEl.setAttribute(`alt`, `star`);
-    
-        let imgCo = document.createElement(`div`);
-    
-        imgCo.classList.add(`star`);
-    
-        imgCo.append(imgEl);
-    
-        document.querySelector(`.card__stars`).append(imgCo);
-      }
+function toggleRate(id){
+  if(activeRate === id ) return;
+  allRateBtn.forEach(btn => btn.classList.remove("active"));
+  document.getElementById(`${id}-star`).classList.add('active');
+  activeRate = id;
+  toggleStars(activeRate);
 }
 
-// submit event
-let submitBtn = document.querySelector(`.card--submit`);
-
-submitBtn.addEventListener(`click`, () => {
-  document.getElementById(`select`).innerHTML = selectedRate;
-
-  document.getElementById(`inter`).style.display = `none`;
-
-  document.getElementById(`msg`).style.display = `flex`;
-});
+function toggleStars(num){
+  starsWrapper.innerHTML = " ";
+  for(let counter = 1; counter <= num; counter++){
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("star");
+    let img = document.createElement("img");
+    img.setAttribute("src", "images/icon-star.svg");
+    img.setAttribute("alt", "star");   
+    wrapper.append(img);
+    starsWrapper.append(wrapper);
+  }
+}
