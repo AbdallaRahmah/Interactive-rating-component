@@ -9,6 +9,7 @@
   --Very-Dark-Blue: hsl(216, 12%, 8%);
 }
 
+/* reset */
 html {
   font-size: 15px;
   -webkit-tap-highlight-color: transparent;
@@ -22,6 +23,49 @@ html {
   box-sizing: border-box;
 }
 
+/* utility classes and components */
+.d-none {
+  display: none;
+}
+
+.items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+@media (min-width: 540px) {
+  .items-wrapper {
+    gap: 1.5rem;
+  }
+}
+
+.circle {
+  background-color: var(--Medium-Grey);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.title {
+  color: var(--White);
+  font-size: 2rem;
+  letter-spacing: -1px;
+  word-spacing: -1px;
+}
+
+.describe {
+  color: var(--Light-Grey);
+  line-height: 1.7;
+  word-spacing: -1px;
+}
+
+@media (min-width: 540px) {
+  .describe {
+    word-spacing: 0;
+  }
+}
+
+/* start styling */
 body {
   width: 100%;
   height: 100vh;
@@ -39,7 +83,7 @@ main {
 
 .card {
   padding-inline: 1.5rem;
-  width: min(90%, 420px);
+  width: min(90%, 28rem);
   background-color: var(--Dark-Blue);
   border-radius: 1rem;
 }
@@ -58,30 +102,13 @@ main {
 
 @media (min-width: 540px) {
   .card .rate-select {
-    margin-block: 2rem;
-  }
-}
-
-.stars-wrapper {
-  margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.25rem;
-}
-
-@media (min-width: 540px) {
-  .stars-wrapper {
-    margin-bottom: 1.675rem;
-    gap: 1.5rem;
+    margin-block: 2.25rem;
   }
 }
 
 .star {
   display: grid;
   place-content: center;
-  background-color: var(--Medium-Grey);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
 }
 
 .star img {
@@ -90,56 +117,34 @@ main {
   display: block;
 }
 
-.card__title {
-  margin-bottom: 1rem;
-  color: var(--White);
-  letter-spacing: -1px;
-  word-spacing: -1px;
+.rate-select .title {
+  margin-block: 1rem;
 }
 
 @media (min-width: 540px) {
-  .card__title {
-    margin-bottom: 1.125rem;
-  }
-}
-
-.card__describe {
-  margin-bottom: 1.5rem;
-  color: var(--Light-Grey);
-  line-height: 1.6;
-  word-spacing: -1px;
-}
-
-@media (min-width: 540px) {
-  .card__describe {
-    margin-bottom: 1.675rem;
-    word-spacing: 0;
+  .rate-select .title {
+    margin-block: 1.125rem;
   }
 }
 
 .rate-options {
-  margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.25rem;
+  margin-top: 1.675rem;
+  margin-bottom: 1.375rem;
 }
 
 @media (min-width: 540px) {
   .rate-options {
-    margin-bottom: 1.675rem;
-    gap: 1.5rem;
+    margin-top: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 .rate-btn {
-  background-color: var(--Medium-Grey);
   color: var(--Light-Grey);
   font-size: inherit;
   font-family: inherit;
   font-weight: bold;
-  aspect-ratio: 1 / 1;
   border: 0;
-  border-radius: 50%;
   cursor: pointer;
   transition: background-color 350ms linear, color 350ms linear;
 }
@@ -179,46 +184,40 @@ main {
   color: var(--Orange);
 }
 
+/* rate view */
 .rate-view {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  display: none;
+  margin-block: 2rem;
+  text-align: center;
 }
-.img-container img {
-  width: auto;
+
+@media (min-width: 540px) {
+  .rate-view {
+    margin-block: 2.75rem;
+  }
+}
+
+.img img {
+  max-width: 100%;
   height: auto;
 }
 
-.msg__select {
-  margin: 1rem 0;
-  padding: 1rem 1.5rem;
-  background-color: var(--Very-Dark-Blue);
-  color: var(--Orange);
-  border: none;
+.rate-status {
+  margin-top: 1.375rem;
+  margin-bottom: 1.125rem;
+  padding: 0.5rem;
+  display: inline-block;
+  background-color: var(--Medium-Grey);
   border-radius: 2rem;
+  color: var(--Orange);
+  letter-spacing: 1px;
 }
 
-.msg__title {
-  color: var(--White);
+@media (min-width: 540px) {
+  .rate-status {
+    margin-block: 2rem;
+  }
 }
 
-.msg__descripe {
-  margin: 1rem 0;
-  color: var(--Medium-Grey);
-  text-align: center;
-  line-height: 1.6;
-}
-
-/* utility classes */
-.rate-bar {
-  display: flex;
-  align-items: center;
-  column-gap: 0.75em;
-}
-
-.rate-bar .item {
-  padding: 1.5em;
-  background-color: var(--Very-Dark-Blue);
-  border-radius: 50%;
+.rate-view .title {
+  margin-bottom: 1.125rem;
 }
