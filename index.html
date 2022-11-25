@@ -17,36 +17,35 @@
   <body>
     <main>
       <div class="card">
-        <div class="rate-select">
-          <div class="stars-wrapper" id="stars-wrapper">
-            <div class="star">
+        <div class="rate-select" id="rate-select">
+          <div class="stars items-wrapper" id="stars-wrapper">
+            <div class="star circle">
               <img src="images/icon-star.svg" alt="star" />
             </div>
           </div>
-          <h1 class="card__title">How did we do?</h1>
-          <p class="card__describe">
+          <h1 class="title">How did we do?</h1>
+          <p class="describe">
             Please let us know how we did with your support request. All
             feedback is appreciated to help us improve our offering!
           </p>
-          <div class="rate-options">
-            <button class="active rate-btn" id="1-star">1</button>
-            <button class="rate-btn" id="2-star">2</button>
-            <button class="rate-btn" id="3-star">3</button>
-            <button class="rate-btn" id="4-star">4</button>
-            <button class="rate-btn" id="5-star">5</button>
+          <div class="rate-options items-wrapper">
+            <button class="active rate-btn circle" id="1-star">1</button>
+            <button class="rate-btn circle" id="2-star">2</button>
+            <button class="rate-btn circle" id="3-star">3</button>
+            <button class="rate-btn circle" id="4-star">4</button>
+            <button class="rate-btn circle" id="5-star">5</button>
           </div>
           <button class="card--submit" id="submit">SUBMIT</button>
         </div>
-        <div class="rate-view d-none">
+        <div class="rate-view d-none" id="rate-view">
           <div class="img">
             <img src="images/illustration-thank-you.svg" alt="thank you" />
           </div>
-          <p class="selected-rate">
-            you selected <span class="selected" id="selected-rate">1</span> out
-            of 5
+          <p class="rate-status">
+            you selected <span id="status">1</span> out of 5
           </p>
           <h2 class="title">Thank you!</h2>
-          <p class="descripe">
+          <p class="describe">
             We appreciate you taking the time to give a rating. If you ever need
             more support, don’t hesitate to get in touch!
           </p>
