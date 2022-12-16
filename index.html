@@ -3,65 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="frontendmentor challenge">
-    <!-- displays site properly based on user's device -->
+    <meta name="description" content="frontend mentor challenge" />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-    <title>Frontend Mentor | Interactive rating component</title>
+    <title>Interactive rating component</title>
     <link rel="stylesheet" href="styles/main.css" />
     <script src="scripts/index.js" defer></script>
   </head>
   <body>
-    <main class="card">
-      <div class="rate--inter" id="inter">
-        <!-- Rating state start -->
-        <div class="card__stars">
-          <div class="star">
-            <img src="images/icon-star.svg" alt="star" />
+    <main>
+      <div class="card">
+        <div class="rate-select" id="rate-select">
+          <div class="stars items-wrapper" id="stars-wrapper">
+            <div class="star circle">
+              <img src="images/icon-star.svg" alt="star" />
+            </div>
           </div>
+          <h1 class="title">How did we do?</h1>
+          <p class="describe">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <div class="rate-options items-wrapper">
+            <button class="active rate-btn circle" id="1-star">1</button>
+            <button class="rate-btn circle" id="2-star">2</button>
+            <button class="rate-btn circle" id="3-star">3</button>
+            <button class="rate-btn circle" id="4-star">4</button>
+            <button class="rate-btn circle" id="5-star">5</button>
+          </div>
+          <button class="card--submit" id="submit">SUBMIT</button>
         </div>
-        <h1 class="card__q">How did we do?</h1>
-        <div class="card__descripe">
-          Please let us know how we did with your support request. All feedback
-          is appreciated to help us improve our offering!
+        <div class="rate-view d-none" id="rate-view">
+          <div class="img">
+            <img src="images/illustration-thank-you.svg" alt="thank you" />
+          </div>
+          <p class="rate-status">
+            you selected <span id="status">1</span> out of 5
+          </p>
+          <h2 class="title">Thank you!</h2>
+          <p class="describe">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
         </div>
-        <div class="card--rate">
-          <div class="active rate" id="rate-1" role="button" aria-pressed="false" onclick="rated('rate-1')">1</div>
-          <div class="rate" id="rate-2" role="button" aria-pressed="false" onclick="rated('rate-2')">2</div>
-          <div class="rate" id="rate-3" role="button" aria-pressed="false" onclick="rated('rate-3')">3</div>
-          <div class="rate" id="rate-4" role="button" aria-pressed="false" onclick="rated('rate-4')">4</div>
-          <div class="rate" id="rate-5" role="button" aria-pressed="false" onclick="rated('rate-5')">5</div>
-        </div>
-        <button class="card--submit">Submit</button>
-      </div>
-      <!-- Rating state end -->
-
-      <!-- rating msg section -->
-      <div class="rate--msg" id="msg">
-        <div class="img-container">
-          <img src="images/illustration-thank-you.svg" alt="Thank" />
-        </div>
-        <div class="msg__select">
-          you selected <span id="select">1</span> out of 5
-        </div>
-        <h2 class="msg__title">Thank you!</h2>
-        <p class="msg__descripe">
-          We appreciate you taking the time to give a rating. If you ever need
-          more support, don’t hesitate to get in touch!
-        </p>
       </div>
     </main>
-
-    <!-- footer section -->
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="https://github.com/AbdallaRahmah">Ben Rahmah</a>.
-    </div>
   </body>
 </html>

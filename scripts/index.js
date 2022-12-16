@@ -1,54 +1,54 @@
-let allRateArr = document.querySelectorAll(`.rate`);
+let activeRate = 1;
 
-let selectedRate = document.querySelector(`.active`).innerHTML;
+const allRateBtn = document.querySelectorAll(
+  "#one-star, #two-star, #three-star, #four-star, #five-star"
+);
 
-let rated = (userRate) => {
-  allRateArr.forEach((rate) => {
-    rate.classList.remove(`active`);
+const starsWrapper = document.getElementById("stars-wrapper");
+
+allRateBtn.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    if (this.textContent !== activeRate) {
+      activeRate = this.textContent;
+      rateStatus.textContent = activeRate;
+      toggleRate(activeRate);
+      toggleStars(activeRate);
+    }
   });
+});
 
-  document.getElementById(userRate).classList.add(`active`);
+const rateSelect = document.getElementById("rate-select"),
+  rateView = document.getElementById("rate-view");
 
-  selectedRate = document.getElementById(userRate).innerHTML;
+const submitBtn = document.getElementById("submit");
 
-  document.getElementById(`select`).innerHTML = selectedRate;
+let rateStatus = document.getElementById("status");
 
-//   adding the rating stars
-ratingStars(selectedRate);
-};
+submitBtn.addEventListener("click", () => {
+  rateSelect.classList.add("d-none");
+  rateView.classList.remove("d-none");
+});
 
-// adding rate stars func
-let ratingStars = (selectedRate) => {
-    let delStars = document.querySelectorAll(`.star`);
-
-    delStars.forEach((star) => {
-        star.remove();
-    })
-
-    for (let counter = 1; counter <= selectedRate; counter++) {
-        let imgEl = document.createElement(`img`);
-    
-        imgEl.src = `images/icon-star.svg`;
-    
-        imgEl.setAttribute(`alt`, `star`);
-    
-        let imgCo = document.createElement(`div`);
-    
-        imgCo.classList.add(`star`);
-    
-        imgCo.append(imgEl);
-    
-        document.querySelector(`.card__stars`).append(imgCo);
-      }
+function toggleRate(id) {
+  allRateBtn.forEach((btn) => btn.classList.remove("active"));
+  allRateBtn[id - 1].classList.add("active");
 }
 
-// submit event
-let submitBtn = document.querySelector(`.card--submit`);
+function toggleStars(num) {
+  starsWrapper.innerHTML = "";
+  for (let counter = 1; counter <= num; counter++) {
+    let wrapper = createWrapper();
+    starsWrapper.append(wrapper);
+  }
+}
 
-submitBtn.addEventListener(`click`, () => {
-  document.getElementById(`select`).innerHTML = selectedRate;
-
-  document.getElementById(`inter`).style.display = `none`;
-
-  document.getElementById(`msg`).style.display = `flex`;
-});
+function createWrapper() {
+  let wrapper = document.createElement("div");
+  let img = document.createElement("img");
+  wrapper.classList.add("star");
+  wrapper.classList.add("circle");
+  img.setAttribute("src", "images/icon-star.svg");
+  img.setAttribute("alt", "star");
+  wrapper.append(img);
+  return wrapper;
+}
