@@ -9,7 +9,6 @@
   --Very-Dark-Blue: hsl(216, 12%, 8%);
 }
 
-/* reset */
 html {
   font-size: 15px;
   -webkit-tap-highlight-color: transparent;
@@ -24,8 +23,13 @@ html {
 }
 
 /* utility classes and components */
-.d-none {
-  display: none;
+div[data-status="active"]{
+  display: flex !important;
+  flex-direction: column;
+}
+
+div[data-status="unactive"] {
+  display: none !important;
 }
 
 .items-wrapper {
@@ -69,19 +73,14 @@ html {
 body {
   width: 100%;
   height: 100vh;
+  display: grid;
+  place-items: center;
   background-color: var(--Very-Dark-Blue);
   font-family: "Overpass", sans-serif;
   overflow: hidden;
 }
 
-main {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-}
-
-.card {
+.rate-box {
   padding-inline: 1.5rem;
   width: min(90%, 28rem);
   background-color: var(--Dark-Blue);
@@ -89,21 +88,25 @@ main {
 }
 
 @media (min-width: 540px) {
-  .card {
+  .rate-box {
     padding-inline: 2rem;
     border-radius: 1.5rem;
   }
 }
 
-.card .rate-select {
+.rate-select {
   margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 
 @media (min-width: 540px) {
-  .card .rate-select {
+  .rate-select {
     margin-block: 2.25rem;
   }
+}
+
+.stars{
+  order: -1;
 }
 
 .star {
@@ -112,7 +115,7 @@ main {
 }
 
 .star img {
-  width: auto;
+  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -130,6 +133,7 @@ main {
 .rate-options {
   margin-top: 1.675rem;
   margin-bottom: 1.375rem;
+  list-style-type: none;
 }
 
 @media (min-width: 540px) {
@@ -140,6 +144,7 @@ main {
 }
 
 .rate-btn {
+  width: 100%;
   color: var(--Light-Grey);
   font-size: inherit;
   font-family: inherit;
@@ -154,12 +159,13 @@ main {
   color: var(--White);
 }
 
-.rate-btn.active {
+.rate-btn[aria-checked="true"] {
   background-color: var(--Orange);
   color: var(--White);
 }
 
-.card--submit {
+.box--submit {
+  order: 0;
   width: 100%;
   padding-top: 1.125rem;
   padding-bottom: 1rem;
@@ -173,13 +179,13 @@ main {
 }
 
 @media (min-width: 540px) {
-  .card--submit {
+  .box--submit {
     padding-top: 1.25rem;
     padding-bottom: 1.125rem;
   }
 }
 
-.card--submit:hover {
+.box--submit:hover {
   background-color: var(--White);
   color: var(--Orange);
 }
@@ -196,16 +202,23 @@ main {
   }
 }
 
+.img{
+  order: -2;
+}
+
 .img img {
+  margin-inline: auto;
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 .rate-status {
   margin-top: 1.375rem;
   margin-bottom: 1.125rem;
+  margin-inline: auto;
   padding: 0.5rem;
-  display: inline-block;
+  order: -1;
   background-color: var(--Medium-Grey);
   border-radius: 2rem;
   color: var(--Orange);

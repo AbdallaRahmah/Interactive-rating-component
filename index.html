@@ -11,46 +11,128 @@
       href="./images/favicon-32x32.png"
     />
     <title>Interactive rating component</title>
-    <link rel="stylesheet" href="styles/main.css" />
-    <script src="scripts/index.js" defer></script>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script src="./scripts/index.js" defer></script>
   </head>
   <body>
-    <main>
-      <div class="card">
-        <div class="rate-select" id="rate-select">
-          <div class="stars items-wrapper" id="stars-wrapper">
-            <div class="star circle">
-              <img src="images/icon-star.svg" alt="star" />
-            </div>
+    <div class="rate-box" aria-label="rating box">
+      <div
+        class="rate-select"
+        id="rate-select"
+        aria-label="rate select"
+        data-status="active"
+      >
+        <h1 class="title">How did we do?</h1>
+        <p class="describe">
+          Please let us know how we did with your support request. All feedback
+          is appreciated to help us improve our offering!
+        </p>
+        <div
+          class="stars items-wrapper"
+          id="stars-wrapper"
+          aria-label="1 star selected"
+        >
+          <div class="star circle" aria-hidden="true">
+            <img src="images/icon-star.svg" alt="one star" />
           </div>
-          <h1 class="title">How did we do?</h1>
-          <p class="describe">
-            Please let us know how we did with your support request. All
-            feedback is appreciated to help us improve our offering!
-          </p>
-          <div class="rate-options items-wrapper">
-            <button class="active rate-btn circle" id="1-star">1</button>
-            <button class="rate-btn circle" id="2-star">2</button>
-            <button class="rate-btn circle" id="3-star">3</button>
-            <button class="rate-btn circle" id="4-star">4</button>
-            <button class="rate-btn circle" id="5-star">5</button>
-          </div>
-          <button class="card--submit" id="submit">SUBMIT</button>
         </div>
-        <div class="rate-view d-none" id="rate-view">
-          <div class="img">
-            <img src="images/illustration-thank-you.svg" alt="thank you" />
-          </div>
-          <p class="rate-status">
-            you selected <span id="status">1</span> out of 5
-          </p>
-          <h2 class="title">Thank you!</h2>
-          <p class="describe">
-            We appreciate you taking the time to give a rating. If you ever need
-            more support, don’t hesitate to get in touch!
-          </p>
+        <ul
+          class="rate-options items-wrapper"
+          role="radiogroup"
+          aria-label="rate optins"
+          aria-required="true"
+        >
+          <li>
+            <button
+              class="rate-btn circle"
+              id="one-star"
+              value="1"
+              type="button"
+              role="radio"
+              name="rate"
+              aria-checked="true"
+              aria-label="one star"
+            >
+              1
+            </button>
+          </li>
+          <li>
+            <button
+              class="rate-btn circle"
+              id="two-star"
+              value="2"
+              type="button"
+              role="radio"
+              name="rate"
+              aria-checked="false"
+              aria-label="two stars"
+            >
+              2
+            </button>
+          </li>
+          <li>
+            <button
+              class="rate-btn circle"
+              id="three-star"
+              value="3"
+              type="button"
+              role="radio"
+              name="rate"
+              aria-checked="false"
+              aria-label="three stars"
+            >
+              3
+            </button>
+          </li>
+          <li>
+            <button
+              class="rate-btn circle"
+              id="four-star"
+              value="4"
+              type="button"
+              role="radio"
+              name="rate"
+              aria-checked="false"
+              aria-label="four stars"
+            >
+              4
+            </button>
+          </li>
+          <li>
+            <button
+              class="rate-btn circle"
+              id="five-star"
+              value="5"
+              type="button"
+              role="radio"
+              name="rate"
+              aria-checked="false"
+              aria-label="five stars"
+            >
+              5
+            </button>
+          </li>
+        </ul>
+        <button type="button" class="box--submit" id="submit">SUBMIT</button>
+      </div>
+      <div
+        class="rate-view"
+        id="rate-view"
+        aria-label="rate view"
+        data-status="unactive"
+      >
+        <h2 class="title">Thank you!</h2>
+        <p class="describe">
+          We appreciate you taking the time to give a rating. If you ever need
+          more support, don’t hesitate to get in touch!
+        </p>
+        <p class="rate-status">
+          you selected <span id="status">1</span> out of 5
+        </p>
+        <div class="img">
+          <img src="images/illustration-thank-you.svg" alt="thank you" />
         </div>
       </div>
-    </main>
+    </div>
   </body>
 </html>

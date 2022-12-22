@@ -1,18 +1,19 @@
-let activeRate = 1;
+const rate = {
+  selected: 1,
+};
 
-const allRateBtn = document.querySelectorAll(
+const allRateBtns = document.querySelectorAll(
   "#one-star, #two-star, #three-star, #four-star, #five-star"
 );
 
 const starsWrapper = document.getElementById("stars-wrapper");
 
-allRateBtn.forEach((btn) => {
+allRateBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
-    if (this.textContent !== activeRate) {
-      activeRate = this.textContent;
-      rateStatus.textContent = activeRate;
-      toggleRate(activeRate);
-      toggleStars(activeRate);
+    if (this.value !== rate.selected) {
+      rate.selected = this.value;
+      toggleRate(rate.selected);
+      toggleStars(rate.selected);
     }
   });
 });
@@ -25,13 +26,14 @@ const submitBtn = document.getElementById("submit");
 let rateStatus = document.getElementById("status");
 
 submitBtn.addEventListener("click", () => {
-  rateSelect.classList.add("d-none");
-  rateView.classList.remove("d-none");
+  rateStatus.textContent = rate.selected;
+  rateSelect.setAttribute("data-status", "unactive");
+  rateView.setAttribute("data-status", "active");
 });
 
 function toggleRate(id) {
-  allRateBtn.forEach((btn) => btn.classList.remove("active"));
-  allRateBtn[id - 1].classList.add("active");
+  allRateBtns.forEach((btn) => btn.setAttribute("aria-checked", "false"));
+  allRateBtns[id - 1].setAttribute("aria-checked", "true");
 }
 
 function toggleStars(num) {
@@ -40,6 +42,7 @@ function toggleStars(num) {
     let wrapper = createWrapper();
     starsWrapper.append(wrapper);
   }
+  num == 1 ? starsWrapper.setAttribute("aria-label", "1 star selected") : starsWrapper.setAttribute("aria-label", `${num} stars slected`);
 }
 
 function createWrapper() {
@@ -48,7 +51,8 @@ function createWrapper() {
   wrapper.classList.add("star");
   wrapper.classList.add("circle");
   img.setAttribute("src", "images/icon-star.svg");
-  img.setAttribute("alt", "star");
+  img.setAttribute("alt", "one star");
+  img.setAttribute("aria-hidden", "true")
   wrapper.append(img);
   return wrapper;
 }
