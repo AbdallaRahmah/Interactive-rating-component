@@ -1,5 +1,13 @@
 const rate = {
   selected: 1,
+
+  get getRate() {
+    return this.selected;
+  },
+
+  set updateRate(rate) {
+    this.selected = rate;
+  },
 };
 
 const allRateBtns = document.querySelectorAll(
@@ -10,11 +18,12 @@ const starsWrapper = document.getElementById("stars-wrapper");
 
 allRateBtns.forEach((btn) => {
   btn.addEventListener("click", function () {
-    if (this.value !== rate.selected) {
-      rate.selected = this.value;
-      toggleRate(rate.selected);
-      toggleStars(rate.selected);
-    }
+    rate.getRate !== Number(this.getAttribute("data-value"))
+      ? renderCard(Number(this.getAttribute("data-value")))
+      : "";
+    document
+      .querySelector("ul")
+      .setAttribute("aria-activedescendant", `${this.getAttribute("id")}`);
   });
 });
 
@@ -26,10 +35,16 @@ const submitBtn = document.getElementById("submit");
 let rateStatus = document.getElementById("status");
 
 submitBtn.addEventListener("click", () => {
-  rateStatus.textContent = rate.selected;
+  rateStatus.textContent = rate.getRate;
   rateSelect.setAttribute("data-status", "unactive");
   rateView.setAttribute("data-status", "active");
 });
+
+function renderCard(id) {
+  rate.updateRate = id;
+  toggleRate(rate.getRate);
+  toggleStars(rate.getRate);
+}
 
 function toggleRate(id) {
   allRateBtns.forEach((btn) => btn.setAttribute("aria-checked", "false"));
@@ -42,7 +57,6 @@ function toggleStars(num) {
     let wrapper = createWrapper();
     starsWrapper.append(wrapper);
   }
-  num == 1 ? starsWrapper.setAttribute("aria-label", "1 star selected") : starsWrapper.setAttribute("aria-label", `${num} stars slected`);
 }
 
 function createWrapper() {
@@ -51,8 +65,7 @@ function createWrapper() {
   wrapper.classList.add("star");
   wrapper.classList.add("circle");
   img.setAttribute("src", "images/icon-star.svg");
-  img.setAttribute("alt", "one star");
-  img.setAttribute("aria-hidden", "true")
+  img.setAttribute("alt", "star");
   wrapper.append(img);
   return wrapper;
 }
