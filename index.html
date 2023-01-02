@@ -15,112 +15,84 @@
     <script src="./scripts/index.js" defer></script>
   </head>
   <body>
-    <div class="rate-box" aria-label="rating box">
-      <div
-        class="rate-select"
-        id="rate-select"
-        aria-label="rate select"
-        data-status="active"
-      >
-        <h1 class="title">How did we do?</h1>
+    <div class="rate-box">
+      <div class="rate-select" id="rate-select" data-status="active">
+        <h1 class="title" id="title">How did we do?</h1>
         <p class="describe">
           Please let us know how we did with your support request. All feedback
           is appreciated to help us improve our offering!
         </p>
-        <div
-          class="stars items-wrapper"
-          id="stars-wrapper"
-          aria-label="1 star selected"
-        >
-          <div class="star circle" aria-hidden="true">
-            <img src="images/icon-star.svg" alt="one star" />
+        <div class="stars items-wrapper" id="stars-wrapper" aria-hidden="true">
+          <div class="star circle">
+            <img src="images/icon-star.svg" alt="star" />
           </div>
         </div>
         <ul
           class="rate-options items-wrapper"
+          aria-labelledby="title"
           role="radiogroup"
-          aria-label="rate optins"
+          aria-activedescendant="one-star"
           aria-required="true"
         >
-          <li>
-            <button
-              class="rate-btn circle"
-              id="one-star"
-              value="1"
-              type="button"
-              role="radio"
-              name="rate"
-              aria-checked="true"
-              aria-label="one star"
-            >
-              1
-            </button>
+          <li
+            class="rate-btn circle"
+            id="one-star"
+            type="button"
+            aria-label="one star"
+            role="radio"
+            aria-checked="true"
+            data-value="1"
+          >
+            1
           </li>
-          <li>
-            <button
-              class="rate-btn circle"
-              id="two-star"
-              value="2"
-              type="button"
-              role="radio"
-              name="rate"
-              aria-checked="false"
-              aria-label="two stars"
-            >
-              2
-            </button>
+          <li
+            class="rate-btn circle"
+            id="two-star"
+            type="button"
+            aria-label="two stars"
+            role="radio"
+            aria-checked="false"
+            data-value="2"
+          >
+            2
           </li>
-          <li>
-            <button
-              class="rate-btn circle"
-              id="three-star"
-              value="3"
-              type="button"
-              role="radio"
-              name="rate"
-              aria-checked="false"
-              aria-label="three stars"
-            >
-              3
-            </button>
+          <li
+            class="rate-btn circle"
+            id="three-star"
+            type="button"
+            aria-label="three stars"
+            role="radio"
+            aria-checked="false"
+            data-value="3"
+          >
+            3
           </li>
-          <li>
-            <button
-              class="rate-btn circle"
-              id="four-star"
-              value="4"
-              type="button"
-              role="radio"
-              name="rate"
-              aria-checked="false"
-              aria-label="four stars"
-            >
-              4
-            </button>
+          <li
+            class="rate-btn circle"
+            id="four-star"
+            type="button"
+            aria-label="four stars"
+            role="radio"
+            aria-checked="false"
+            data-value="4"
+          >
+            4
           </li>
-          <li>
-            <button
-              class="rate-btn circle"
-              id="five-star"
-              value="5"
-              type="button"
-              role="radio"
-              name="rate"
-              aria-checked="false"
-              aria-label="five stars"
-            >
-              5
-            </button>
+          <li
+            class="rate-btn circle"
+            id="five-star"
+            type="button"
+            aria-label="five stars"
+            role="radio"
+            aria-checked="false"
+            data-value="5"
+          >
+            5
           </li>
         </ul>
         <button type="button" class="box--submit" id="submit">SUBMIT</button>
       </div>
-      <div
-        class="rate-view"
-        id="rate-view"
-        aria-label="rate view"
-        data-status="unactive"
-      >
+      <div class="rate-view" id="rate-view" data-status="unactive">
         <h2 class="title">Thank you!</h2>
         <p class="describe">
           We appreciate you taking the time to give a rating. If you ever need
