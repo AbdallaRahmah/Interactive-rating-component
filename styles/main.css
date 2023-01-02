@@ -145,9 +145,9 @@ body {
 
 .rate-btn {
   width: 100%;
+  display: grid;
+  place-content: center;
   color: var(--Light-Grey);
-  font-size: inherit;
-  font-family: inherit;
   font-weight: bold;
   border: 0;
   cursor: pointer;
